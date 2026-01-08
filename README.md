@@ -10,19 +10,24 @@ Official documentation: (https://fragpipe.nesvilab.org/docs/tutorial_headless.ht
         export PATH=$PATH:/usr/local/bin 
         docker login 
         ```
+        
 2. Copy the necessary tools into the `./tools` folder (`.jar` files that fragpie needs to run)
     [Additional tools and different version released] (https://github.com/Nesvilab/FragPipe/releases/)
     - The three tools that fragpipe 23.1 requires to operate: IonQuant.jar, MSFragger.jar, diaTracer.jar (these can 
     be downloaded via the fragpipe offical website with an institution related email for academic use)
     - Here the tools have been already downloaded and included in the `./tools` folder 
+
 3. Copy necessary data into the `./data` folder (fasta, modified workflow, mzMl, manifest.tsv, etc.)
     - Here the files for testing have already been downloaded and included in the `./data` folder
     - More .mzML files can be found in the `./mzMLFiles` folder and fasta files from the `./fastaFiles`
     - All the Workflow files are included in the docker image you pulled and can be found in the `./workflows-original` folder,
     you can modify the parameters based on the your need for the experiment 
     - We will be using the "LFQ-MBR_custom.workflow" file that is already included in the `./data` folder
+
 4. Update the workflow and manifest files
     - Adjust the content of the .workflow and manifest.tsv files based on your need for the experiment
+
 5. Run `./run.sh` as a helper command to run the fragpie docker container into bash shell with proper volumes mounted.
+    - The version of _fragpipe_ is frozen to 23.1 of the docker image in the `./run.sh` in case of dependancies or update issues. Feel free to change it to "latest" tag or any other versions in the future if there are major functions update. 
     - Here the volumns are bind mounted to the local directory where you pulled the repo. 
 6. In the containers bash shell, run `/tools/run-inner.sh` to start processing
